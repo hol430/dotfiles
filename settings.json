@@ -1,0 +1,44 @@
+{
+    "security.workspace.trust.banner": "never",
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.startupPrompt": "never",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.fontFamily": "'Roboto Mono', 'monospace', monospace",
+    "editor.minimap.enabled": false,
+    "window.autoDetectColorScheme": true,
+    "extensions.ignoreRecommendations": true,
+    "files.simpleDialog.enable": true,
+    "debug.console.fontFamily": "Roboto Mono",
+    "r.rterm.option": [
+        "--no-save",
+        "--no-restore",
+        "--quiet"
+    ],
+    "C_Cpp.default.defines": [
+        "HAVE_NETCDF",
+        "COMPRESS_OUTPUT",
+        "HAVE_LIBPTHREAD",
+        "__building_module(x)=0",
+        "HAVE_MPI"
+    ],
+    "r.plot.defaults.colorTheme": "vscode",
+    "update.mode": "none",
+    "dotnet-test-explorer.enableTelemetry": false,
+    "git.openRepositoryInParentFolders": "never",
+    "python.createEnvironment.trigger": "off",
+    "r.plot.useHttpgd": true,
+    "explorer.confirmDelete": false,
+    "C_Cpp.autocompleteAddParentheses": true,
+    "workbench.startupEditor": "none",
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.symbolCacheDownload": true,
+    "julia.enableTelemetry": false,
+    "window.zoomLevel": 1,
+    "dotnet.codeLens.enableReferencesCodeLens": false
+}
