@@ -11,6 +11,8 @@
     "editor.minimap.enabled": false,
     "window.autoDetectColorScheme": true,
     "extensions.ignoreRecommendations": true,
+    "extensions.verifySignature": false,
+    "extensions.allowed": "*",
     "files.simpleDialog.enable": true,
     "debug.console.fontFamily": "Roboto Mono",
     "r.rterm.option": [
