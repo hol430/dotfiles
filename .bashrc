@@ -67,6 +67,7 @@ ipif() {
 #export JDK_JAVA_OPTIONS="-D<option 1> -D<option 2>..."
 export JDK_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Djdk.gtk.version=3'
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT=1
 
 # Unlimited bash history
 export HISTFILESIZE=
