@@ -1,0 +1,17 @@
+# C# code style settings
+[*.cs]
+
+# IDE0028: Use collection initializers or expressions
+dotnet_diagnostic.IDE0028.severity = none
+
+# IDE0090: Simplify new expression
+dotnet_diagnostic.IDE0090.severity = none
+
+# IDE0270: Null check can be simplified (if null check)
+dotnet_diagnostic.IDE0270.severity = none
+
+# IDE0290: Use primary constructor
+dotnet_diagnostic.IDE0290.severity = none
+
+# IDE0305: Use collection expression for fluent
+dotnet_diagnostic.IDE0305.severity = none

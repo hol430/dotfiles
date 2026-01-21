@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+#
+# Uninstall dotfiles.
+#
+
+set -euo pipefail
+shopt -s nullglob
+
+# Enable debugging if the DEBUG environment variable is set to 1.
+if [ "${DEBUG:-}" = "1" ]; then set -x; fi
+
+# Get path to the root of the repository.
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." >/dev/null 2>&1 && pwd -P)"
+
+# Files to be linked into the home directory.
+LINK_FILES=(".bashrc" ".colorgccrc" ".editorconfig" ".lintr" ".makepkg.conf" ".Rprofile" ".vimrc")
+
+# TODO: CLI/Configuration options.
+DRY_RUN=0
+VERBOSE=0
+
+# Print the specified error message and exit with a non-zero status.
+die() {
+    echo "${1}" >&2
+    exit 1
+}
+
+uninstall_file() {
+    local FILE="${1}"
+    if [ "${VERBOSE}" = 1 -o "${DRY_RUN}" = 1 ]; then
+        echo "rm -f -- \"${FILE}\""
+    fi
+    if [ "${DRY_RUN}" = 0 ]; then
+        rm -f -- "${FILE}"
+    fi
+}
+
+# Uninstall dotfiles.
+uninstall() {
+    local SRC="${1}"
+    local DST="${2}"
+
+    if [ ! -e "${DST}" ]; then
+        die "Cannot uninstall \"${DST}\": file doesn't exist"
+    elif [ ! -L "${DST}" ]; then
+        die "Cannot uninstall \"${DST}\": not a symlink"
+    fi
+
+    # Destination exists and is a symlink. Verify that it's linked to source.
+    local DST_ABS="$(readlink -f -- "${DST}" 2>/dev/null || true)"
+    if [ "${DST_ABS}" != "${SRC}" ]; then
+        die "Symlink \"${DST}\" will not be uninstalled, because it is linked to a different file"
+    fi
+
+    # Destination is safe to uninstall.
+    uninstall_file "${DST}"
+}
+
+for FILE in "${LINK_FILES[@]}"
+do
+    uninstall "${DIR}/${FILE}" "${HOME}/${FILE}"
+done
+
+VSCODE_DIR="${HOME}/.config/Code/User"
+for FILE in "${DIR}/vscode"/*
+do
+    uninstall "${FILE}" "${VSCODE_DIR}/$(basename "${FILE}")"
+done
+
+WINDSURF_DIR="${HOME}/.config/Windsurf/User"
+for FILE in "${DIR}/windsurf"/*
+do
+    uninstall "${FILE}" "${WINDSURF_DIR}/$(basename "${FILE}")"
+done

@@ -1,4 +1,5 @@
 {
+    "workbench.colorTheme": "Default Dark Modern",
     "security.workspace.trust.banner": "never",
     "security.workspace.trust.enabled": false,
     "security.workspace.trust.startupPrompt": "never",
@@ -8,11 +9,9 @@
         120
     ],
     "editor.fontFamily": "'Roboto Mono', 'monospace', monospace",
-    "editor.minimap.enabled": false,
     "window.autoDetectColorScheme": true,
     "extensions.ignoreRecommendations": true,
     "extensions.verifySignature": false,
-    "extensions.allowed": "*",
     "files.simpleDialog.enable": true,
     "debug.console.fontFamily": "Roboto Mono",
     "r.rterm.option": [
@@ -42,5 +41,29 @@
     "julia.symbolCacheDownload": true,
     "julia.enableTelemetry": false,
     "window.zoomLevel": 1,
-    "dotnet.codeLens.enableReferencesCodeLens": false
+    "dotnet.codeLens.enableReferencesCodeLens": false,
+    "editor.codeLens": false,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.minimap.enabled": false,
+    "windsurfPyright.analysis.diagnosticSeverityOverrides": {
+
+    },
+    "windsurfPyright.analysis.diagnosticMode": "workspace",
+    "windsurfPyright.analysis.typeCheckingMode": "basic",
+    "windsurfPyright.analysis.inlayHints.callArgumentNames": true,
+    "windsurfPyright.analysis.inlayHints.functionReturnTypes": true,
+    "windsurfPyright.analysis.inlayHints.variableTypes": true,
+    "windsurfPyright.analysis.useLibraryCodeForTypes": true,
+    "windsurfPyright.analysis.autoImportCompletions": true,
+    "windsurfPyright.importStrategy": "useBundled",
+    "[python]": {
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.defaultColorDecorators": "never"
+    },
+    "windsurfPyright.analysis.logLevel": "Trace",
+    "files.associations": {
+        "*.rmd": "rmd",
+        "*.Rmd": "rmd"
+    },
+    "editor.accessibilitySupport": "on",
 }
