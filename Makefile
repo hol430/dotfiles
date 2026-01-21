@@ -1,7 +1,7 @@
 .PHONY: install uninstall
 
 install:
-    ./scripts/install
+	./scripts/install
 
 uninstall:
-    ./scripts/uninstall
+	./scripts/uninstall
