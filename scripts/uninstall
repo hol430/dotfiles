@@ -19,6 +19,39 @@ LINK_FILES=(".bashrc" ".colorgccrc" ".editorconfig" ".lintr" ".makepkg.conf" ".R
 DRY_RUN=0
 VERBOSE=0
 
+# Parse CLI arguments.
+DRY_RUN=0
+VERBOSE=0
+
+USAGE="Usage: ${0} [-d] [-v] [-h]
+
+Options:
+    -d, --dry-run    Do not make any changes, only print what would be done
+    -v, --verbose    Print verbose output
+    -h, --help       Print this help message
+"
+
+while [ $# -gt 0 ]
+do
+    case ${1} in
+        -d|--dry-run)
+            DRY_RUN=1
+            shift
+            ;;
+        -v|--verbose)
+            VERBOSE=1
+            shift
+            ;;
+        -h|--help)
+            echo "${USAGE}"
+            exit 0
+            ;;
+        *)
+            die "Unknown option: ${1}"
+            ;;
+    esac
+done
+
 # Print the specified error message and exit with a non-zero status.
 die() {
     echo "${1}" >&2

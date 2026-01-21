@@ -6,24 +6,50 @@ shopt -s nullglob
 # Enable debugging if the DEBUG environment variable is set to 1.
 if [ "${DEBUG:-}" = "1" ]; then set -x; fi
 
-# Get path to the root of the repository.
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." >/dev/null 2>&1 && pwd -P)"
-
-# Install dotfiles.
-
-# Files to be linked into the home directory.
-LINK_FILES=(".bashrc" ".colorgccrc" ".editorconfig" ".lintr" ".makepkg.conf" ".Rprofile" ".vimrc")
-
-# TODO: CLI/Configuration options.
-DRY_RUN=0
-OVERWRITE=0
-VERBOSE=0
-
 # Print the specified error message and exit with a non-zero status.
 die() {
     echo "${1}" >&2
     exit 1
 }
+
+# Parse CLI arguments.
+DRY_RUN=0
+OVERWRITE=0
+VERBOSE=0
+
+USAGE="Usage: ${0} [-d] [-o] [-v] [-h]
+
+Options:
+    -d, --dry-run    Do not make any changes, only print what would be done
+    -o, --overwrite  Overwrite existing files
+    -v, --verbose    Print verbose output
+    -h, --help       Print this help message
+"
+
+while [ $# -gt 0 ]
+do
+    case ${1} in
+        -d|--dry-run)
+            DRY_RUN=1
+            shift
+            ;;
+        -o|--overwrite)
+            OVERWRITE=1
+            shift
+            ;;
+        -v|--verbose)
+            VERBOSE=1
+            shift
+            ;;
+        -h|--help)
+            echo "${USAGE}"
+            exit 0
+            ;;
+        *)
+            die "Unknown option: ${1}"
+            ;;
+    esac
+done
 
 # Create a backup filename for the specified file.
 create_backup_filename() {
@@ -106,6 +132,14 @@ install() {
         install_file "${SRC}" "${DST}"
     fi
 }
+
+# Get path to the root of the repository.
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." >/dev/null 2>&1 && pwd -P)"
+
+# Files to be linked into the home directory.
+LINK_FILES=(".bashrc" ".colorgccrc" ".editorconfig" ".lintr" ".makepkg.conf" ".Rprofile" ".vimrc")
+
+# Install dotfiles.
 
 # Install files to home directory.
 for FILE in "${LINK_FILES[@]}"
