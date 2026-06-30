@@ -20,6 +20,9 @@ export PATH="/usr/lib/colorgcc/bin:${PATH}:${HOME}/.bin"
 # Add .NET Core SDK tools
 export PATH="$PATH:${HOME}/.dotnet/tools"
 
+# Add Julia tools.
+export PATH="${PATH}:${HOME}/.julia/bin"
+
 export CCACHE_PATH="/usr/bin"
 WSU="${HOME}/work/wsu"
 wsu="${WSU}"
@@ -50,7 +53,7 @@ dumpvar() { ncdump -v "${1}" "${2}" | grep ' = ' | tail -1; }
 # \w is the current working directory, with $HOME abbreviated to ~
 # for more escape codes which may be used here, see the PROMPTING section of the
 # bash manual page.
-PS1="${GREEN}\u${RESET}:${RED}\w${RESET} $ "
+PS1="\[\e]0;\u@\h:\w\a\]${GREEN}\u${RESET}@${YELLOW}\h${RESET}:${RED}\w${RESET} \$ "
 
 # Detailed information on IP address or host name in bash via https://ipinfo.io
 ipif() {
