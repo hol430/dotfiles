@@ -154,11 +154,3 @@ for FILE in "${DIR}/vscode"/*
 do
     install "${FILE}" "${VSCODE_DIR}/$(basename "${FILE}")"
 done
-
-# Install windsurf files.
-WINDSURF_DIR="${HOME}/.config/Windsurf/User"
-mkdir -p "${WINDSURF_DIR}"
-for FILE in "${DIR}/windsurf"/*
-do
-    install "${FILE}" "${WINDSURF_DIR}/$(basename "${FILE}")"
-done

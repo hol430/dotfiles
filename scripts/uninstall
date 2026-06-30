@@ -99,9 +99,3 @@ for FILE in "${DIR}/vscode"/*
 do
     uninstall "${FILE}" "${VSCODE_DIR}/$(basename "${FILE}")"
 done
-
-WINDSURF_DIR="${HOME}/.config/Windsurf/User"
-for FILE in "${DIR}/windsurf"/*
-do
-    uninstall "${FILE}" "${WINDSURF_DIR}/$(basename "${FILE}")"
-done
