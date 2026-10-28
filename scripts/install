@@ -154,3 +154,6 @@ for FILE in "${DIR}/vscode"/*
 do
     install "${FILE}" "${VSCODE_DIR}/$(basename "${FILE}")"
 done
+
+# Install hyprland files.
+install "${DIR}/hypr" "${HOME}/.config/hypr"
