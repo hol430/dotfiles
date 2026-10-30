@@ -157,3 +157,8 @@ done
 
 # Install hyprland files.
 install "${DIR}/hypr" "${HOME}/.config/hypr"
+
+if [ ! -d "${HOME}/.R" ]; then
+    mkdir -p "${HOME}/.R"
+fi
+install "${DIR}/.R/Makevars" "${HOME}/.R/Makevars"
