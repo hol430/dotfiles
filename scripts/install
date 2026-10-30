@@ -137,7 +137,8 @@ install() {
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." >/dev/null 2>&1 && pwd -P)"
 
 # Files to be linked into the home directory.
-LINK_FILES=(".bashrc" ".colorgccrc" ".editorconfig" ".lintr" ".makepkg.conf" ".Rprofile" ".vimrc")
+LINK_FILES=(".bashrc" ".colorgccrc" ".editorconfig" ".lintr" ".makepkg.conf"
+            ".Rprofile" ".vimrc" ".gdbinit")
 
 # Install dotfiles.
 
